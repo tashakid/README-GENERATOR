@@ -5,7 +5,7 @@ This project is a README generator that automatically creates comprehensive READ
 
 ## Features
 - Gathers project information automatically
-- Generates README content using Meta-Llama-3.1-405B-Instruct from github marketplace
+- Generates README content using OpenAI GPT-4o mini from github marketplace
 - Supports multiple project types (Rust, Node.js, Python)
 - Retries on API failures
 
@@ -33,20 +33,19 @@ To install this project, follow these steps:
     cargo run
     ``` 
 ## Usage
-The readme generator will prompt you to:
-    1. Enter the path to your project directory. 
-    2.Enter the Access Token given by github.
-
+Ensure you have github access token in order to access their API. Create an environment variable to set your token as the key for the client code by:
+   ```
+   export GITHUB_TOKEN="<your-github-token-goes-here>"
+   ```
+If you do not do this it will prompt you for the key
 ![enter path and github token](images/image2.png)
 
+The readme generator will prompt you to:
+    1. Enter the path to your project directory. 
+![Enter project path](images/image1.png)
+
 ## Configuration
-The generator looks for the following configuration files in your project:
-- `Cargo.toml` (for Rust projects)
-- `package.json` (for Node.js projects)
-- `requirements.txt` or `setup.py` (for Python projects)
-
-Ensure these files are present and up-to-date in your project for the best results.
-
+It checks at all available files and gets the necessary content needed for generating the content of readme
 ![Generates readme and asks if to save](images/image3.png)
 
 ## Contributing
