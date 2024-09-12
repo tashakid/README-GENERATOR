@@ -8,18 +8,10 @@ pub fn prompt_for_project_folder() -> String {
     folder.trim().to_string()
 }
 
-pub fn prompt_for_api_key() -> String {
-    print!("Enter your HUGGING FACE API key: ");
+pub fn prompt_for_github_token() -> String {
+    print!("Enter your GitHub token: ");
     io::stdout().flush().unwrap();
-    let mut api_key = String::new();
-    io::stdin().read_line(&mut api_key).expect("Failed to read API key");
-    api_key.trim().to_string()
-}
-
-pub fn prompt_for_model() -> String {
-    print!("Choose a Hugging Face model (e.g., 'gpt2', 'facebook/bart-large-cnn', 'EleutherAI/gpt-neo-2.7B'): ");
-    io::stdout().flush().unwrap();
-    let mut model = String::new();
-    io::stdin().read_line(&mut model).expect("Failed to read model name");
-    model.trim().to_string()
+    let mut token = String::new();
+    io::stdin().read_line(&mut token).expect("Failed to read GitHub token");
+    token.trim().to_string()
 }

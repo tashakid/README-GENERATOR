@@ -19,18 +19,16 @@ fn print_banner() {
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     print_banner();
-    println!("{}", "Generates a README for your project using Hugging Face API".bright_blue());
+    println!("{}", "Generates a README for your project using meta-llama-3-8b-instruct model".bright_blue().bold());
     println!();
 
     let project_dir = cli::prompt_for_project_folder();
-    let api_key = cli::prompt_for_api_key();
+    let github_token = cli::prompt_for_github_token();
+    let model_name = "meta-llama-3-8b-instruct".to_string(); // Set the model name directly
+
+    println!("Generating README using {}... This may take a moment.", model_name);
     
-    println!("Choose a Hugging Face model (e.g., 'gpt2', 'facebook/bart-large-cnn', 'EleutherAI/gpt-neo-2.7B'):");
-    let model = cli::prompt_for_model();
-    
-    println!("Generating README... This may take a moment.");
-    
-    match generator::generate_readme(&project_dir, &api_key, &model) {
+    match generator::generate_readme(&project_dir, &github_token, &model_name) {
         Ok(readme_content) => {
             println!("\nGenerated README content:\n");
             println!("{}", readme_content);
